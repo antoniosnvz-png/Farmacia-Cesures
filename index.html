@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmacia Cesures — Pontecesures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101010;
+    --ink-soft:#6B6B66;
+    --paper:#FFFFFF;
+    --bg:#FAFAF8;
+    --line:#E4E3DF;
+    --green:#1F6E4B;
+    --green-dark:#123B29;
+    --green-tint:#E8F1EC;
+    --radius-s:4px;
+    --radius-m:10px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Montserrat', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .line{border:none;border-top:1px solid var(--line);margin:0;}
+  button{font-family:inherit;cursor:pointer;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--green);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--ink);
+    color:#D9D9D6;
+    font-size:13.5px;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 28px;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .topbar a.ig-top{display:flex;align-items:center;gap:6px;font-weight:500;color:#fff;}
+  .topbar a.ig-top:hover{color:var(--green);}
+
+  /* ---------- Header ---------- */
+  header.site{
+    background:var(--ink);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  header.site .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 28px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:18px;
+    color:#fff;
+  }
+  .logo img{height:38px;width:auto;flex:none;}
+  nav.main{display:flex;gap:28px;align-items:center;}
+  nav.main a{
+    font-size:14.5px;
+    font-weight:600;
+    color:#C8C8C4;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+  }
+  nav.main a:hover{color:#fff;border-color:var(--green);}
+  .nav-cta{
+    background:var(--green);
+    color:#fff !important;
+    padding:10px 18px;
+    border-radius:var(--radius-s);
+    font-weight:700;
+    border-bottom:none !important;
+  }
+  .nav-cta:hover{background:#28885C;}
+  .menu-toggle{display:none;background:none;border:none;padding:8px;}
+  .menu-toggle span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+    padding:60px 28px 64px;
+  }
+  .eyebrow-line{
+    display:flex;align-items:center;gap:10px;
+    color:var(--ink-soft);
+    font-weight:600;
+    font-size:13.5px;
+    margin-bottom:22px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .eyebrow-line .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;}
+  .eyebrow-line .dot.closed{background:#B8B8B3;}
+
+  .status-line{
+    font-size:clamp(30px, 3.8vw, 44px);
+    font-weight:800;
+    line-height:1.08;
+  }
+  .status-line .sub{
+    display:block;
+    font-size:17px;
+    font-weight:500;
+    color:var(--ink-soft);
+    margin-top:14px;
+  }
+
+  .hero-facts{
+    margin-top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .hero-facts .fact{
+    display:flex;
+    gap:12px;
+    font-size:15px;
+    align-items:flex-start;
+  }
+  .hero-facts .fact svg{flex:none;margin-top:2px;color:var(--green);}
+  .hero-facts .fact strong{font-weight:700;}
+
+  .hero-ctas{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    padding:13px 22px;
+    border-radius:var(--radius-s);
+    font-weight:700;
+    font-size:15px;
+    border:1px solid transparent;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:var(--green-dark);}
+  .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:#fff;}
+
+  .hero-visual{
+    position:relative;
+    background:radial-gradient(120% 120% at 30% 20%, #1c1c1c 0%, #0a0a0a 60%, #000000 100%);
+    border-radius:var(--radius-m);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10%;
+    aspect-ratio:4/5;
+    overflow:hidden;
+  }
+  .hero-visual::before{
+    content:"";
+    position:absolute;
+    inset:22px;
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:6px;
+    pointer-events:none;
+  }
+  .hero-visual img{
+    width:100%;
+    max-width:420px;
+    filter:drop-shadow(0 18px 40px rgba(0,0,0,0.55));
+  }
+  .hero-visual .loc-chip{
+    position:absolute;
+    left:24px;
+    bottom:24px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.16);
+    color:#EDEDEA;
+    font-size:12.5px;
+    font-weight:600;
+    padding:8px 14px;
+    border-radius:100px;
+    backdrop-filter:blur(4px);
+  }
+  .hero-visual .loc-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+  /* ---------- Info strip ---------- */
+  .info-strip{
+    background:var(--green-dark);
+    color:#EAF1EC;
+  }
+  .info-strip .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:0;
+  }
+  .info-strip .cell{
+    padding:22px 28px;
+    border-left:1px solid rgba(255,255,255,0.14);
+  }
+  .info-strip .cell:first-child{border-left:none;padding-left:0;}
+  .info-strip .cell .label{font-size:12.5px;opacity:.75;margin-bottom:4px;}
+  .info-strip .cell .value{font-weight:700;font-size:16px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(26px,3vw,34px);font-weight:800;max-width:20ch;}
+  .section-head p{color:var(--ink-soft);max-width:42ch;margin-top:10px;}
+  .kicker{color:var(--ink-soft);font-weight:700;font-size:13px;margin-bottom:10px;display:block;text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* ---------- Hours block ---------- */
+  .hours-highlight{
+    background:var(--ink);
+    color:#fff;
+  }
+  .hours-highlight .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hours-highlight h2{color:#fff;}
+  .hours-highlight .kicker{color:#9A9A96;}
+  .hours-big-table{width:100%;border-collapse:collapse;margin-top:8px;}
+  .hours-big-table td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.14);font-size:17px;}
+  .hours-big-table tr:first-child td{padding-top:0;}
+  .hours-big-table td:last-child{text-align:right;font-weight:700;}
+  .status-card{
+    background:#181818;
+    border-radius:var(--radius-m);
+    padding:32px;
+  }
+  .status-card .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:700;
+    padding:6px 14px;border-radius:100px;
+    background:var(--green);color:#fff;
+    margin-bottom:18px;
+  }
+  .status-card .badge.closed{background:#3A3A38;color:#D9D9D6;}
+  .status-card h3{color:#fff;font-size:22px;}
+  .status-card p{color:#B8B8B4;margin-top:10px;font-size:14.5px;}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .service-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .service-item{
+    padding:40px 32px;
+    border-left:1px solid var(--line);
+  }
+  .service-item:first-child{border-left:none;}
+  .service-item .num{font-size:13px;color:var(--ink-soft);font-weight:700;}
+  .service-item h3{font-size:20px;margin-top:14px;font-weight:800;}
+  .service-item p{color:var(--ink-soft);margin-top:10px;font-size:15px;}
+  .service-item a.link{
+    display:inline-flex;align-items:center;gap:6px;
+    margin-top:18px;font-weight:700;font-size:14.5px;color:var(--green);
+    border-bottom:1px solid var(--green);
+    padding-bottom:2px;
+  }
+
+  form.stack{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-size:13.5px;font-weight:700;color:var(--ink);}
+  .field input, .field select, .field textarea{
+    border:1px solid var(--line);
+    border-radius:var(--radius-s);
+    padding:12px 14px;
+    font-family:inherit;
+    font-size:15px;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  .field textarea{resize:vertical;min-height:80px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .form-note{font-size:13px;color:var(--ink-soft);margin-top:-6px;}
+  .submit-btn{
+    background:var(--green);
+    color:#fff;
+    border:none;
+    padding:14px 20px;
+    border-radius:var(--radius-s);
+    font-weight:700;
+    font-size:15px;
+    align-self:flex-start;
+  }
+  .submit-btn:hover{background:var(--green-dark);}
+
+  /* ---------- Appointments ---------- */
+  .appointments{background:var(--bg);}
+  .apt-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+  }
+  .apt-list{display:flex;flex-direction:column;}
+  .apt-list .apt-item{
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .apt-list .apt-item:first-child{padding-top:0;}
+  .apt-item h4{font-weight:700;font-size:16px;}
+  .apt-item p{font-size:13.5px;color:var(--ink-soft);margin-top:4px;}
+  .apt-item .dur{font-size:13px;color:var(--ink-soft);font-weight:700;white-space:nowrap;}
+  .apt-form-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:32px;
+  }
+
+  /* ---------- Location ---------- */
+  .loc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:stretch;
+  }
+  .map-frame{
+    border-radius:var(--radius-m);
+    overflow:hidden;
+    border:1px solid var(--line);
+    min-height:380px;
+  }
+  .map-frame iframe{width:100%;height:100%;border:0;display:block;min-height:380px;}
+  .loc-detail dl{margin:0;}
+  .loc-detail .row{
+    display:flex;
+    gap:18px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .loc-detail .row:first-child{padding-top:0;}
+  .loc-detail dt{width:120px;flex:none;font-weight:700;font-size:14px;color:var(--ink-soft);}
+  .loc-detail dd{margin:0;font-size:15px;}
+  .hours-table{width:100%;border-collapse:collapse;margin-top:6px;}
+  .hours-table td{padding:4px 0;font-size:14.5px;}
+  .hours-table td:first-child{padding-right:28px;}
+  .hours-table td:last-child{text-align:right;font-weight:700;white-space:nowrap;}
+
+  /* ---------- Instagram ---------- */
+  .insta-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .insta-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:36px;
+  }
+  .insta-tile{
+    aspect-ratio:1;
+    border-radius:var(--radius-s);
+    background:var(--ink);
+    color:#B8B8B4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    text-align:center;
+    padding:14px;
+  }
+  .insta-tile:nth-child(2n){background:var(--green-dark);color:#DCEAE1;}
+  .ig-follow{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#fff;
+    padding:13px 22px;border-radius:var(--radius-s);
+    font-weight:700;font-size:15px;
+  }
+  .ig-follow:hover{background:var(--green-dark);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:#C8C8C4;
+    padding:56px 0 28px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    align-items:start;
+  }
+  .foot-logo{height:34px;width:auto;margin-bottom:16px;}
+  footer h5{color:#fff;font-size:14.5px;margin-bottom:14px;font-weight:700;}
+  footer p, footer li{font-size:14px;line-height:1.7;opacity:.85;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer a:hover{opacity:1;color:var(--green);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;
+    padding-top:22px;font-size:13px;opacity:.6;flex-wrap:wrap;gap:10px;
+  }
+  .foot-legal-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-legal-links button{
+    background:none;border:none;padding:0;
+    color:#C8C8C4;font-size:13px;font-family:inherit;
+    text-decoration:underline;text-underline-offset:2px;
+  }
+  .foot-legal-links button:hover{color:#fff;}
+
+  /* ---------- Legal modals ---------- */
+  .legal-overlay{
+    display:none;
+    position:fixed;inset:0;
+    background:rgba(16,16,16,0.72);
+    z-index:200;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .legal-overlay.open{display:flex;}
+  .legal-modal{
+    background:var(--paper);
+    color:var(--ink);
+    max-width:640px;
+    width:100%;
+    max-height:82vh;
+    overflow-y:auto;
+    border-radius:var(--radius-m);
+    padding:36px;
+    position:relative;
+  }
+  .legal-modal h3{font-size:22px;margin-bottom:6px;}
+  .legal-modal .legal-updated{font-size:12.5px;color:var(--ink-soft);margin-bottom:22px;}
+  .legal-modal h4{font-size:15px;font-weight:700;margin:22px 0 8px;}
+  .legal-modal h4:first-of-type{margin-top:0;}
+  .legal-modal p, .legal-modal li{font-size:14.5px;color:var(--ink-soft);line-height:1.65;}
+  .legal-modal ul{padding-left:20px;margin:6px 0;}
+  .legal-modal strong{color:var(--ink);}
+  .legal-close{
+    position:absolute;top:18px;right:18px;
+    background:var(--bg);border:1px solid var(--line);
+    width:32px;height:32px;border-radius:100px;
+    font-size:16px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);
+  }
+  .legal-close:hover{background:var(--ink);color:#fff;}
+  .field-check{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:13.5px;color:var(--ink-soft);
+  }
+  .field-check input{margin-top:3px;flex:none;}
+  .field-check a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+
+  /* ---------- Contact links (tel / maps) ---------- */
+  .contact-link{
+    text-decoration-line:underline;
+    text-decoration-color:transparent;
+    text-underline-offset:3px;
+    transition:text-decoration-color .18s ease, opacity .18s ease;
+    cursor:pointer;
+  }
+  .contact-link:hover, .contact-link:focus-visible{
+    text-decoration-color:currentColor;
+    opacity:.8;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    nav.main{
+      position:fixed;top:64px;left:0;right:0;bottom:0;
+      background:var(--ink);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:24px 28px;
+      gap:20px;
+      transform:translateX(100%);
+      transition:transform .25s ease;
+      overflow-y:auto;
+    }
+    nav.main.open{transform:translateX(0);}
+    .menu-toggle{display:block;}
+    section{padding:56px 0;}
+    .section-head{margin-bottom:32px;}
+    .hero .wrap{grid-template-columns:1fr;padding:36px 20px 40px;gap:36px;}
+    .hero-visual{aspect-ratio:16/10;order:-1;padding:28px;}
+    .hero-visual .loc-chip{font-size:11.5px;padding:7px 12px;left:16px;bottom:16px;}
+    .hero-facts .fact{font-size:14px;}
+    .hero-ctas{gap:10px;}
+    .hero-ctas .btn{flex:1 1 auto;justify-content:center;}
+    .info-strip .wrap{grid-template-columns:repeat(2,1fr);}
+    .info-strip .cell{padding:18px 16px;}
+    .info-strip .cell:nth-child(3){border-left:none;}
+    .hours-highlight .wrap{grid-template-columns:1fr;gap:28px;}
+    .hours-big-table td{padding:13px 0;font-size:15.5px;}
+    .service-row{grid-template-columns:1fr;}
+    .service-item{border-left:none;border-top:1px solid var(--line);padding:32px 4px;}
+    .service-item:first-child{border-top:none;}
+    .apt-grid{grid-template-columns:1fr;gap:36px;}
+    .apt-form-box{padding:24px;}
+    .loc-grid{grid-template-columns:1fr;gap:32px;}
+    .map-frame{min-height:280px;}
+    .map-frame iframe{min-height:280px;}
+    .insta-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .foot-bottom{flex-direction:column;align-items:flex-start;gap:14px;}
+    .field-row{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+    .legal-modal{padding:28px 20px;max-height:88vh;}
+    .legal-close{top:14px;right:14px;}
+  }
+  @media (max-width: 480px){
+    .topbar .wrap{font-size:12.5px;}
+    .logo{font-size:16px;}
+    .logo img{height:32px;}
+    .hero-facts .fact span{font-size:13.5px;}
+    .info-strip .wrap{grid-template-columns:1fr;}
+    .info-strip .cell{border-left:none !important;border-top:1px solid rgba(255,255,255,0.14);padding:14px 0;}
+    .info-strip .cell:first-child{border-top:none;padding-top:0;}
+    .insta-grid{grid-template-columns:1fr;}
+    .apt-form-box{padding:20px;}
+    .loc-detail dt{width:100px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')">Avenida Vigo, 38 · Pontecesures, Pontevedra</a>
+    <a class="ig-top" href="https://instagram.com/farmaciacesures" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      @farmaciacesures
+    </a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="logo">
+      <img src="data:image/png;base64,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" alt="Farmacia Cesures">
+      Farmacia Cesures
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main" id="mainNav">
+      <a href="#pedidos">Pedidos</a>
+      <a href="#citas">Citas</a>
+      <a href="#ubicacion">Dónde estamos</a>
+      <a href="#instagram">Instagram</a>
+      <a class="nav-cta" href="#citas">Pedir cita</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0;">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-line"><span class="dot" id="statusDot"></span> <span id="statusEyebrow">Pontecesures, Pontevedra</span></div>
+      <div class="status-line" id="statusHeadline">Comprobando horario…
+        <span class="sub" id="statusSub">Lun–Vie 9:00–21:00 · Sáb y Dom 9:30–14:00</span>
+      </div>
+      <div class="hero-facts">
+        <div class="fact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')"><strong>Avenida Vigo, 38</strong><br>36640 Pontecesures, Pontevedra</a></span>
+        </div>
+        <div class="fact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <span><a class="contact-link" href="tel:+34986556359"><strong>986 556 359</strong></a> · WhatsApp <a class="contact-link" href="https://wa.me/34630621652" target="_blank" rel="noopener">630 621 652</a></span>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#citas" class="btn btn-primary">Reservar cita</a>
+        <a href="#pedidos" class="btn btn-ghost">Hacer un pedido</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="data:image/png;base64,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kqSkGYSSpKQZhJKkpBmEkqSkGYSSpKQZhJKkpBmEkqSkGYSSpKQZhJKkpBmEkqSkGYSSpKQZhJKkpBmEkqSkGYSSpKQZhJKkpBmEkqSkNWRdgKRKEaGOQGzni2LIunCpUwxCSR86gxNYWfDSgbf5OvOyLlrqHINQ0oc+wth2LT+bHlmXLHWW1wglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUlryLoAqdN6cDBvx5B1GTWgme2yLkEqP4NQ1W8jrsq6hBoRPUekFBmEqgUeDRaHn6OS5O8/SVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0gxCSVLSDEJJUtIMQklS0hqyLkBaT2z5nypdoDnrEqTOMwhVeX7HZHewVSGwlHlZFyF1lkGoChPgaZ7OugpJ6fAaoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpBqEkKWkGoSQpaQahJClpDVkXoNKIEAh0YxjdOYzBNK/z9F3MopEZLCcSQ2dbCwQCsdNFd7qStdYfNmQoffgYvdeqLbCIG1lE5GkWFqfVls+7A+sVoS7nZxeIxNDBz7TVevILNBfvO1inmroK3D42Zys24Sjq1/kU3uRWVrK8WH8fqnQGYQ2KEBjIvhzLNuxFd7rkOPI/mWaW8QgvcxMPx3k0deqPPfBd9mdlJ96hjlmcx6IirX8dQ9ifY9iC3Qh0y7HQ2USaeZT3eZBH45O80clPAHbkB3TN8fgizuPVVl95Bifk+Ozq+RcXdSI8evHj9X4AtSXwL6bHeTzOcpqLuvs/jnHtrGVdK/hPnilGKREa2IURHMq2bE/I8a1FvgwsYypLuZOZ8VHms9I4TEYk9o8z4prO6OzPOJVTJIY4MH4uTotNsTBN8al4aRweu3T8m4518ZYCW8tvRuzf+W0tEuvj0PiDOKvgdpvjyvhsvDqeGDeLXTtaQSQeEJfmfP/5cVhs/ZU/yVPZLbHDly5y/CUX+mk0x3fixPjVuGfs9CHcGtV8o9Pbx9J4QFG2jy5xeLw0zm3HJ7IiTo8/i0fHjWKDe8NqE4k94gNt7Wk8IqwpEXpxCuPYY52TPa2pZxjDOI4bGB8fp7F6f/dGqGcIp3ESg9vxskBgB3bgFF7h6/wj67XI2KoTyqMYxUwu5h9xbkdPzlaeCF3YjXEcx8B2fSJd2I3dOJfnOZPHsl4LlYKdZWpIhN24jJ8zvB0x+IGBnMuN7Jb1OnRq7QOf4k6+3a4Y/FAD27FB1mtRQbbnV9zI7rWSgxG68FVu59x2xeCHerADPbJeC5WGQVgjIhH24HecnPOKWGE2zHmNqypECHyaX7B1B7qIKLcG9uUq9ijeKdLsROjC1zifjbOuRJXIIKwJEWAPrmL3rCvJbP1XxaC7uWLbnavYNesiOmt1DHpEp5wMwhqQegwC8Al+aQyWxO58nqruJBIh8GXOp3vWlahS2VmmNmzPlenGYIQt+SobtbrQOyxt+bfAgOo9BZyJjzOeqVkX0Sl78oVWYzAyl8aWf69nYAeusauqGYRVL0IPPs8erS7UzCtM4onVZwBGsiNbVtiJovc6Ng4xQh1fZf821nwys1vWvp7RbMxwdmNzeme90pl4nffWeWRQqz8jBnIWj8asx9EtXv1Tpl0i9OL7bJ3n6RW8xD95gXt4nwBEenEIvRnDNmztD6ZUGIS14FDOafX5O7mWybzJ8lW7sgi/oQejOZcDS/6nfgd/LugEfB2Ps6CDbWzKx/I8M48fcT1zP1jzFldH6El39mYUn8m7i6xdP+Satf7yI8M4kJPZOe8rdqNrx2KoTS/w49XHYq2p43We6mAbuzAqzzMzuYg7mL/OoKHnYuDX9GIEh/EJT7gnyAH11SYSe7c6mP39+M24Scz1uhD7xhPiPXFZ54cstzKg/iel3n4i8eS4Is9Q6M+31uMxEutaBt83d3Zrr6oB9eutZSSGuFW8Le9W9E7crzPfYysD6h+IPUq7hUTihXnaXhiPaGP7aFhr8H1RhvSrvAobUG9nmeo3hjF5n1vAN/kJb65/UisQIgu4no9zJq9lvQqdtBldcj7+FH+nldEUgdDM83yXw/gRr2e9ElkKEHmVL/J8ngX6V/Vx0VZ5Hp/IvW1sH01M4/McyWW8n/VKqJQMwqoWoRefzXutbwHf5Ir8c0YGAizkz5zJnTUwVGx9i9refQVC5Hn+k9O4jTdYknXJWQkAL/K3rOsoq3dZ2tZ1z0BYyTS+wL8xhTdYkXXJKg2vEVa7weyT55lmLuCKtqYKDkC8hyf4BZ+uuaHoWzGEJ9terOUzeJgNeDfrkrMTiKzXiaa2DWNQfKvtjT5AU/wzd9KTt7MuWaXhEWEViwCH5p0w6jH+WNiM+QHe5iucwjm8kPU6FdXmfJm+hc2LEggLw2thca39FiiSWjxfAHswjq4Fbx/vhtlhudtHbfKIsLr14og8z0SupIBfu6sEeIs/Zr0yJXA6g7mGB+MrNHkbnU54jsezLqEE6vkOu3EdD8e3aSzybadUVQzC6taVLfI88xQ3ZF0cADtzWpt9HwPLuY33SrAjauBgDmYWc7iLV+MLPMVS/FWfU4QGhuR58j3mlajZAZxCY5vHZIFJvFCC760nJ/AJnucNbmZ+fIxZLO70fSlVhQzC6jYkb2++KRVyPWMsYwtY6j1GduL61LMsoWcrzw9mMCOAd3iLybwQX+Yh3mOhO7x17MHH8zzzeMm6iQzh8oKWO7MTp+1bP5qtY0d2ZDTwOvO4i7lxOk8X0pFGtcMgrG7D8l4hfCihU4EPM4udClhuIzZiJ2AJ83mcCfFu5jEnmU+pVRH68vk8W1Mjd1f11nQv77QxAd8qm7EZuwLvs4ApTIgP8Bbzqni9VTCDUNXvLf7ERe1Yvic92ZzDWcyrXBUn8jQrqLkus4WJq0bRdGcM/8ZheRZ6kIlZ19kpT3Erp7Vj+X7049Mcz1JmcEV8kOe9fljrDMLa9BoPZV1CuQQi/IlT2aGdL6ynLzvzU97nJs7n1RiT2dntzhHxg2mlm/kIo+nFPnlPLi/jimoeVhKIjVzO0WzYzhd2pSsHsC9v8Qf+J84nne0jQQZhbVrIm1mXUFYvczUXdWhrrqM/p7M3F3FDXJbIru5LfHH1AXBcNa9CXku5kOuq/nj5If6PcR16ZT2b8TVG8p9MjnajqVmOI6xaEerSvfXSmgLAL7i4oMmbc9uJy7iUgbU5XG49gTpCyz91rWZcE3/kknWmpK46AZr4Dtd1+A3qOYDr+T49E9k+EuQRoWpAIC7lQuBrHd6i+3A68LlkjgoLsYwLuZQV1f+JBOLbfAn4dIffYmO+yXL+K+s1UWl4RFi1AjQzPesqKkWAJfwXZzOlY3c1BOA4jq/VSVQ64FW+y8XMr/4YhJbZk77EVzt8KydoYBwj3Tpqk0eEtakPmzA/6yIAeIkZBfzcWsTCzjYUiIu5llv4JqcwqEP3GO/Lt7mf2Vl8TBVmEffxPR4rQweR+TzIyjYvQYbOfyuB+Db/y/9xAcfSr0OHAFvxLT4dF9XGTwOtySCsTVuyL89kXQQAN/D1gnY6RfipHSDGd/k2V7M/YzmQjfPcnim/nTmRi7P4mCpKZDzfZXFZusg8yydZVlBNnRaIkVc4h/9lNAezP/3a/XNpDGO4qfQfisrNIFRpRQjN5WsuQDPPxmf5A4MZxRhG0MDAduzwRvMzylhvRQqcxMNcV6azxLF8o/QCwAqmx+lcxrYczhh2oysDCn6DHhxoENYig7C6LaQxz1HPvlwbq3k2kE4J0MjMOJM/sBG9OITejGFLNso7D8+HhrB1fDnVz221gfyQx3g26zJKJcASnopPcTn9GMBoenIE/dmMfm2+dHf6xgXJbx81xyCsbpN5Kc9A8hEMSGws4XoCLGU28FwM/JoGtmdnDmJ/hrZyzm9rNuXlrCsvsSu5j3qgmaGcl+eH1GAu5tw4u+pHELYiwEIWMjs+Rh2/pI492ZaxDM97R3uAHenHgqwrV7EZhNVtEa/kCcKdOY7fZl1epQiRRcDUOJVrGcSnOJthWdeUoclcG4AI/dku75CCI/kJZ7A862JLL0Az70O8hwn8jm04nVPZMuuqVE4On6hui7knzzOBsxlU6EWeSKyPY+LpseqGlEdiXewX+8W6Am+v2sQcfsbxPFy2EgNdW6ufHmyT58nnSnu1MsB8/oNH8i5wNGdSX21bxNoisT72j70L6f4aCDE08jz/ycm8mnXlKieDsIoFgGdYkufpPTi5sN1YhIF8i+u4PO/96CpZH/7AXXyWXoXtsgMBnuc3NBW5jhV5jp76cWSrr9uYfXM+Hssy1fWbfC/v0ITe/JD9y1BDaW3DHdzA8bFLO7aPSVybddkqJ4Ow2k1gQp5n6vgWe7X9BhEG8HMuYkCV9pasY1v24edcxm7tOHqZxqIi1zGDqXmeGUXfVirbvd3TQRdNALiNS/L2D+3Pjxha3ceEdGMoh3AlP2bLdqzJg86skBKDsKoFWMz9eZ8ewMWMiA35/6IjEQ7jr3wq6zXptG6czHX8R9w8FrYHG5ink8jTvNSR5gMszzsebiSH5x4IF6Enn81z34cXebr0H1sAuJIb8i4wkt/QvwYyoR9f4S+cFvsXuH1skqeX0EPMy3pVVHwGYfX7G8/lfW4ktzCOrrl3wrGeXfgZ1zCqRraDHfkpd/A19oldWw3/QG/OolfOp19jbgf7STZzR55nuvMfDF0/CiPUczoH53nVG7xejg8twAIuZmbeBQ7icxR4WrHC7c94bmYcO8f6NraPTTkzz9MveOf6WmSv0erX+i2INuAnjObmOIk3Wb7qTzhCA/3Yn4P5FJuVuLqdOS0WErN1PM4jne6sX8fO/JT3uInb4iQWsmjdScJioAc780MOyvn6Jm7oxAniB3mLQTmf2Z+r+SH3fTg9V4Q6tuI0vpb3PoD/KGjGleJ4gK9zHT1yPteF7/EC18fSDKQYwCk0FhCzdbzOPZ2+D0YXRjCC1/kr98QHWcridbYOqKMno7iAPXK+fj63leJDUNYMwioXiPArRnJ03kV68yk+yStM4omWSIoM4gi2zbPjK66xjC1wyQc4okgjtDbgNE5iFrO5kxif5lHqgNgytH40u7FJnlc+xM2daHc6N/C5PM8dwF+5h0kx8CCzOJiN2YBPMjTvez3JX8s1hi8Q4Z/8gq/mOV3cne/wAo+VpPEhXF7gku9waJFq2IyvcC6v8SyTY+BBXqQOaGZgy9D6HfNetb2FB0vyKShjBmHVC8TFfJ9d2LqVherYJm8n/UqxQYcmys6ngSEMYRSwiPdaHqtvY7K1Ri7v+L3YA3ElV3F83tlrenIMxwDzWcKA1oZUAJGryzn5dyAu5YfsxSF5Ftid8Xwizsr0pGCvov5w68FQhnIsMJ/FLY91a2OytflcXgs3pdL6auPakB7lV2U8kVZderNFyz+bthqDK7mEv3XyKOwxxrd5G6j+bN5GDMIT5TseXG0B5/F43mf35Av0qIkrhevqv3r7aD0GF/Ed/pV1sSoNg7AGBIj8nAuMwk6ZyiUs6Uz4BGji53kHURRuJl9kTnlXPgA8xsWtbENf5tyk79Z4C1eT7Oy9tc4grAkBGrmEr9XuNMkltpy/82/MLcI7zeXfO3m75JmczaTyz/EZAK7jorxHtA18ngMTjcL3uYzzUphuLlUGYY0IhBX8hpN4qBMzprzLiqzXIxPv8TNOZXrodPgEAjzGWZ34FmZyNpM6X0nHqqeRK5iUd4EhXMmeGRSWtTf4Fp/ntWy+FZWDQVhDAkznGH7cgSG/TbzAZXyslWtElWspP+H6Dt/hfiXTOIHvF290WCe+hZVcx8mtBFHJBZjL55iRd4Ht+VKrs+RUorc4n7s7fDS3nDs4kvGeFE1KJPaPM+KazqiyzT5xkdglDo+XxqdiUyzMO/He+Lm4aWuD0NtstS7eUmBr+c2IHZzBJBJ7xNHx+3FyfLldLc6Pv48nxkExFHsbX/0tzC24lqY4LX4ublCsSnL8JRf4Nx2J4+KCViq9uLAJztd5z290evtYGg/o4PYRYr94TPzf+K/4ZrtanBN/Fo+J/QqZsFuVKhJ7xAfa2tM4fKLGBGiM05jOxuzDMezPkDx3P2imiZeZyX3cz5Ms7/Rdwh+mvs3+kq2pYxaNHV7npXEi9/MjtmZ/jqUHe7JB3rs+NBJXr/n00nSHX/0tXMYIjmJvetOQp8dqI0t4hJe5iYeYSzH3uY3cxys5pgcIbQ7MuBo4Ls/FwEA/BvFGu6t5kds7OZftCuZ37IUh8n68mdtp4COM4DB6sDfdqcszanIFkRm8ym38i2c8EkzDOt9yhP5MZqc1HjqT37kpVJ+46rvdnK3YhKPW2wnXMYu7mMMrq2aU6nRrgbBqXHYni+5kLXHVZbo6dqI3/TmWbjkWuYtXeKNYa15APV0YRg9GsSPNQGQvuq3uhr+SW3mFp1le7GpaPol8T7baVquvhTqa2/uzKUKgrmK2j24MowuDOSzHWi7nJubzEm9B6bcPlV6EHtyz1l1UnmYk80PrL/LUqFQ6kbhF3No9rFQenhqVKk6gnDPGSCqEvUYlSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJMwglSUkzCCVJSTMIJUlJa2hziS40xC5ZlylJUrtFuhHaWqjtIDyP0z1ulCRVoUgdw9paqO0gHMKQrNdEkqRS8VhPkpQ0g1CSlDSDUJKUNINQkpQ0g1CSlLT1e4028yL1rMy6MEmSiqyeF2le98F1BhpGqKMP9cSsq5UkqcgCK1lIc5tj7CVJkiRJkiRJkiRJkiRJkiRJkiRJUo34/6OS0Zc1jq9oAAAAAElFTkSuQmCC" alt="Logotipo Farmacia Cesures">
+      <span class="loc-chip"><span class="dot"></span> <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:inherit;">Avenida Vigo, 38 · Pontecesures</a></span>
+
+    </div>
+  </div>
+</section>
+
+<div class="info-strip">
+  <div class="wrap">
+    <div class="cell"><div class="label">Dirección</div><div class="value"><a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:inherit;">Avenida Vigo, 38, Pontecesures</a></div></div>
+    <div class="cell"><div class="label">Teléfono</div><div class="value"><a class="contact-link" href="tel:+34986556359" style="color:inherit;">986 556 359</a></div></div>
+    <div class="cell"><div class="label">Lun – Vie</div><div class="value">9:00 – 21:00</div></div>
+    <div class="cell"><div class="label">Sáb y Dom</div><div class="value">9:30 – 14:00</div></div>
+  </div>
+</div>
+
+<section class="hours-highlight">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Horario</span>
+      <h2>Estos son nuestros horarios</h2>
+      <table class="hours-big-table">
+        <tr><td>Lunes a viernes</td><td>9:00 – 21:00</td></tr>
+        <tr><td>Sábados</td><td>9:30 – 14:00</td></tr>
+        <tr><td>Domingos</td><td>9:30 – 14:00</td></tr>
+      </table>
+    </div>
+    <div class="status-card">
+      <span class="badge" id="statusBadge">Comprobando…</span>
+      <h3 id="statusCardTitle">Farmacia Cesures</h3>
+      <p id="statusCardText"><a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:inherit;">Avenida Vigo, 38, Pontecesures, Pontevedra.</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Cómo te ayudamos</span><h2>Nuestros servicios</h2></div>
+    </div>
+    <div class="service-row" style="grid-template-columns:repeat(2,1fr);">
+      <div class="service-item">
+        <div class="num">01</div>
+        <h3>Pedido para recoger</h3>
+        <p>Dinos qué necesitas y lo dejamos preparado en mostrador para cuando pases.</p>
+        <a class="link" href="#pedidos">Hacer un pedido →</a>
+      </div>
+      <div class="service-item">
+        <div class="num">02</div>
+        <h3>Cita para servicios</h3>
+        <p>SPD, perfiles analíticos, consejo nutricional y dermocosmética, con tu tiempo reservado.</p>
+        <a class="link" href="#citas">Pedir cita →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pedidos" style="background:var(--paper);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Pedidos</span><h2>Haz tu pedido para recoger en la farmacia</h2><p>Cuéntanos qué necesitas y lo dejamos listo en mostrador. Te avisamos por WhatsApp.</p></div>
+    </div>
+    <form class="stack" id="orderForm" style="max-width:560px;">
+      <div class="field-row">
+        <div class="field">
+          <label for="ordName">Nombre</label>
+          <input type="text" id="ordName" required placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label for="ordPhone">Teléfono</label>
+          <input type="tel" id="ordPhone" required placeholder="986 000 000">
+        </div>
+      </div>
+      <div class="field">
+        <label for="ordItems">¿Qué necesitas?</label>
+        <textarea id="ordItems" required placeholder="Ej: suplementos nutricionales, cremas faciales, lociones anticaída..."></textarea>
+      </div>
+      <div class="field">
+        <label for="ordTime">¿Cuándo pasas a recogerlo?</label>
+        <select id="ordTime">
+          <option>Lo antes posible</option>
+          <option>Hoy por la tarde</option>
+          <option>Mañana</option>
+        </select>
+      </div>
+      <p class="form-note">Al confirmar se abre WhatsApp con tu pedido ya escrito, listo para enviar al 630 621 652.</p>
+      <label class="field-check">
+        <input type="checkbox" required>
+        <span>He leído y acepto la <a href="#" onclick="openLegal('privacidad'); return false;">política de privacidad</a>.</span>
+      </label>
+      <button type="submit" class="submit-btn">Confirmar pedido por WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="citas" class="appointments">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Citas</span><h2>Reserva un hueco con tu farmacéutico</h2><p>Sin llamadas ni esperas: eliges el servicio y la hora que te viene bien.</p></div>
+    </div>
+    <div class="apt-grid">
+      <div class="apt-list">
+        <div class="apt-item"><div><h4>SPD (Sistema Personalizado de Dosificación)</h4><p>Organización de toda tu medicación para evitar despistes.</p></div><div class="dur">30 min</div></div>
+        <div class="apt-item"><div><h4>Control de tensión y glucosa</h4><p>Medición y seguimiento con registro.</p></div><div class="dur">10 min</div></div>
+        <div class="apt-item"><div><h4>Consejo nutricional</h4><p>Pauta personalizada con nuestra farmacéutica.</p></div><div class="dur">30 min</div></div>
+        <div class="apt-item"><div><h4>Análisis de aguas</h4><p>Para garantizar la calidad del agua que consumes.</p></div><div class="dur"></div></div>
+        <div class="apt-item"><div><h4>Dermocosmética</h4><p>Te ayudamos a escoger lo mejor para tu piel.</p></div><div class="dur">15 min</div></div>
+      </div>
+      <div class="apt-form-box">
+        <h3 style="font-size:19px;font-weight:800;margin-bottom:4px;">Solicita tu cita</h3>
+        <p style="color:var(--ink-soft);font-size:14.5px;">Te confirmamos por WhatsApp en horario de apertura.</p>
+        <form class="stack" id="aptForm">
+          <div class="field">
+            <label for="aptService">Servicio</label>
+            <select id="aptService">
+              <option>SPD</option>
+              <option>Control de tensión y glucosa</option>
+              <option>Consejo nutricional</option>
+              <option>Análisis de aguas</option>
+              <option>Dermocosmética</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="aptDate">Fecha preferida</label>
+              <input type="date" id="aptDate" required>
+            </div>
+            <div class="field">
+              <label for="aptHour">Hora preferida</label>
+              <input type="time" id="aptHour" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="aptName">Nombre</label>
+              <input type="text" id="aptName" required placeholder="Tu nombre">
+            </div>
+            <div class="field">
+              <label for="aptPhone">Teléfono</label>
+              <input type="tel" id="aptPhone" required placeholder="986 000 000">
+            </div>
+          </div>
+          <label class="field-check">
+            <input type="checkbox" required>
+            <span>He leído y acepto la <a href="#" onclick="openLegal('privacidad'); return false;">política de privacidad</a>.</span>
+          </label>
+          <button type="submit" class="submit-btn">Enviar solicitud por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion" style="background:var(--paper);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Cómo llegar</span><h2>Avenida Vigo, 38, Pontecesures</h2></div>
+    </div>
+    <div class="loc-grid">
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Farmacia+Cesures,+Av.+Vigo,+38,+36640+Pontecesures,+Pontevedra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Farmacia Cesures"></iframe>
+      </div>
+      <div class="loc-detail">
+        <div class="row"><dt>Dirección</dt><dd>Avenida Vigo, 38 · 36640 Pontecesures, Pontevedra<br><a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:var(--green);font-weight:600;font-size:13.5px;">Abrir en mi app de mapas →</a></dd></div>
+        <div class="row"><dt>Teléfono</dt><dd><a class="contact-link" href="tel:+34986556359" style="color:inherit;">986 556 359</a></dd></div>
+        <div class="row"><dt>WhatsApp</dt><dd><a class="contact-link" href="https://wa.me/34630621652" target="_blank" rel="noopener" style="color:inherit;">630 621 652</a></dd></div>
+        <div class="row">
+          <dt>Horario</dt>
+          <dd>
+            <table class="hours-table">
+              <tr><td>Lunes – Viernes</td> <td>9:00 – 21:00</td></tr>
+              <tr><td>Sábados</td><td>9:30 – 14:00</td></tr>
+              <tr><td>Domingos</td><td>9:30 – 14:00</td></tr>
+            </table>
+          </dd>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="insta-head">
+      <div><span class="kicker">Instagram</span><h2>Consejos y novedades, mantente al día con nosotros</h2></div>
+      <a class="ig-follow" href="https://instagram.com/farmaciacesures" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        Seguir @farmaciacesures
+      </a>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-tile">Novedades en parafarmacia</div>
+      <div class="insta-tile">Rutinas faciales</div>
+      <div class="insta-tile">Productos infantiles</div>
+      <div class="insta-tile">Consejos de temporada</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAQAAADTdEb+AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+oJCwstLlGzz/UAABFqSURBVHja7d17eFT1ncfx9yGB3CCABBBwKwjITRB0UVtEUEulxWW9L+4ii62lu1Wfenm6z6O1ai1aq221dffRp3W1fXZRq1svtRWrqFDQqtTKTS6KAuGaBiRCSAhkcvaPTJIJTXJOkvme32TO5+U/EE8yv5PzZubMmd/8BkQMeAC+61FIVvGAXABy6E+O6+FIVkhQTqIhrBKe5HOuRyRZoZQ5lDWElctQhroekWSFbvVN5Sb/Wge8zSrXo5Iu7RzGUlf/x9yULz/L/a5HJl3aw4xt+GO3lC97rsclXVxKQbmtfF2k3VIvW3Xr8E8RaYPCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDERG7nf0SmysSPUI/P56tlcVh45GfUPXItRzKydhPZHFYhDzDG9SBSvMr3XQ8hOtkcVg6ncbrrQaTY6XoAUcqkh4r0S7geQAaPxlh2hyXOKCwxobDEhMISEwpLTGTz5Ya/9TzrIry16ZzteofdiVdYT/NkhLd2l8KKi25Rvlbnx+eFwRboHEtMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCstOt4C/Z7V4rZocrSXUNPt7lGvMO6ew7LzBG66H4I7CMhPrZd7j9bgv0VFYYkJhiQmFJSYUlphQWGJClxtC8ENuZ3mBIewYMuUyh8JqQ8rB9CikF8UcRyFFlACQYA+1fEYFFRzicNP26Ty0KWPIoYhielNCDgMoSI6hjKPUspcqDlLFYfym73CZmMJqUePByePvGMmpjGYYA+lNEd3JoXvy/9bgc5hKPmUPW9nAej5hD5XpCaxxDD04gXGcyjiGUUIxPfHo0XgSc4Q66jhEFQf4K9vZwmY+ppS9HLUIPSyF9TeSh6OQUziH6UxgAHmtbJoH5NOHE5gAQA172czbLGc1u6jz6ehBTY6hOyfzRc5lIoPo0cqmPZKjbVLHQXazgfdZyVrKqK3/adHmpbCa8QE8hjOT2ZzOce389jyGMIRp3MA2VrCY5ZS1/6Amo+rFdK5kGoPbvRPd6E1vRnMxh9nGKv7Icj7icLR5mYYV/oTTxNH2DSAZ1RjmcTkndeqW8ziZk5nLRn7P86ymJvx9lw9QyEwWcE7yPKrj8hnFKP6JMv7MH1jC5vqHxyjisr3HGs45EexDa/IZEH5jH2AkX2MOJ6bp9nswgQksYClP8DoVYQ6pD3AmN3Nhp6NKNZBZzGInS/k1y6nwI0jLNqyzeMx8D9LAB+jFldzI6LT/8H5cyixW8kt+y9624kqO4uvcxBCT3RzCv3AJf+YJnuCAyS2k0DlW/QEdx+1c3PhsL93ymcrnuYZH+S37Wn6A9gFOYiGXmx6TAqYykfdYaXgbgMLCh278I3czxviGcvk8k5nNfCpaHAVM5kG+EMlOR/B6S8zD8qEH3+Q2+kVyc7mMI7/FUcAZPMp417+PdO5qjPnQixu4Ja0nym1LtPJMdVJ2ZRXrsHzI43ZucP078GEwP86urOI2uyHlCZkP3bmRazMgq3xu5Vy3o0i/aH+tlawl4Wxffcqa/ojHXG6L8EGwdRdyteshpF+0YW3kYiod7m3q+/ymcjdFDscCgA8l3NTslb4sEW1YdVRxyPUugw+DuIdB7fqmBOWUspMydifvdfMYRH+GMJh+rb5MHWw2k9ux9UHK2MWOlH8ihQygH/3p29LzTXeiPsPw3E9D8yGXb7XjipHPxyznVVazk0PUNvt/3SmiP8P5e85mUnteQkrqw9Uhj8F+3uRl/kIpFVRT1/j1HHpQSD9OZCwTOJ2T6OXoF9tMPJ8VTmdB6JfL1vA4z1OaciiT3+oDHKWCCj7iZQoYyXlcxJnh7zl8mMxpITas5CkeYxXVLfy/BNVUs48PeRWPEkYxnRlMcp1X7MLyoZhv0zfUxvt4mJ+zHVp6hc9r/lOrWcMaHudc5vLlkGdNHjNCbPkht/ECR1oeRbN98ymnnBX8lNOZzYWMcDeJNF6XG+rNZFqo7dYwjzvYDl7g8fEatvmM57mKq3gj1LPfniEekD9gHs9wpF2jOMhSbuICbmaN+W+zFTELy4diFoQ61X6Xq3iJuuDD2SS5bTXPcjn/wY7AbxjC8IAt9nIj74SJqvkoPIAtPMAsvkupwS8yUMzCAmZydoit3uUa1nRkSlzyoO7jJ1zKiwH3WycEPiS/wOsdm5iXHMcOFnIJzx3zlCMCcQurgHkh7q/W8XXWdnymZfKgvss87mR/GxsObnUme70ES0h0/DQpOY73mM/tKXMqcqM484rVybsPE5kSuNl+bunYvVUqDx8q+AHruZeRKV9OVRRwI1Vs7WwDHj4c4D42841kxlX20/xiFhYeF9MnYBufn7M4HfPCPcBP8Czb+AmnJ79Y1Wx2Q9CcfD8dD2HJcTzD7xp3qqYzPy+ceIXVjxmB22zk4c48/DTn4cN7XMHw5EGtbmmaX6sKGJSe+ele/QWRCMUoLB8mMSpwo0cpTecpiIcPZU0vfx/zP9vWnRHpG0e04nTy7jE1cDbDRv4v3e9a8475L0VV4G3NoMjxm+g6KE5h5Ye4HPkC2yP8t72r/np6G6ZxmfP3Z3ZInMIaEvhA+BkvRnoUdwU+Pyvkh1xNvo/fxfKKU1jD6R+wxWrWRnouspudgdsM5L/4BedTDD5dJ7DYnLz7MDbw0ujyiKchfsZqJgZuVcBcLuJ9lvAWG9nbsApDPffTkFoWm7DwAt/lfIR3Ir47SPAac8kJsWVPpjKVanaymfWsYxM72UtV6mpYmRVZfMLKD1zoYx+boj00Hv4KShkW+hsKGMEIZgKVlFPKJ3zEZjazh0+psVn4raPiE1YRxwdssb2Vq02WSvk913Xg+3rSk2FMAxIcoIytbGId69lCecN6WFrRLxq9A2cS7HQwHz/BL7miA1Oam+TQl76MZiZwgF2sYxXvspay+odJV3HFJ6x+gZN1t0Y/ucTDX80zXJumH1dMMaO5jGo+4W1eZgV7XMUVn8sN+YFryZQ7+dddy4N8kOafWcA4vsYi/sBCJtLNxSWK+ITVP2DuE+x2MSwPNnMHnxn86B5M4Du8xINMwos6rviElR/4tD7o5RU7L3Cf2a0P4np+x/cYFO1LQ/EJK5ij81yv/uHwR4ZhD+a7PMN5eNGlpbAaHDV5OArFgyoWcrfpzM4pLOLf6R5VWgqrge9wuRI8qOYe/o3NhjdyPPdxXVRpKawGPdq9qntaeVDLk1zOM4YzPYv4PteSE0VaCquJ42kDHsAq5jOfZWbnW0XcwUVR7E18wjqauvpCi4IuR5jzAKp4mov5Kq8YnXH14S6G2/8bik9YZYHvTWn/h4ukXXLq8n4WcSmzuZ/3qEr7jYzlOvtXXOLzkk5N4As2/aP4xIZgHuBDJctYRj8mMYUzGMvxaVz/6kp+5a+y3df4hLWPyoBXC4eSG/2rhS1rXChpH0tYQh6DGcEYxjOSEykJfKNrkIFcxmrbc8r4hHWQAwFr+A2lmE9dDzNVY141bGELrwJFlDCEoYxkBEMZRAm9OnQ6M5uHbCcJxSesSsoD3kwxhMGZFVa9hjsnH+AQh9jGW0A3CunDIIZzCuMYxefataLqyZzmL7Z8MIxPWNVsCVhn5jjG+esy4SyrZccs9FZHJZXsYCXQnX6MYjJTOZOBoX5YHpNZbDna+DwrTARe1c7h7Iw4ew/hmDfAHmUPy/gRV3ABt/FRqB8x3vZOJTZhebAh8NR8SkSfqZPmPWsMrIbV3M0/8FiIZT9OoqflqGITFrAhcEGOsXyha7xrryWNeW3ieh4NfM5XErjuTqfEKaztfBywRR5z3F9/7xyvfq7ET+uX5G1DEcWW44hTWAdCfPzjDCZ13fusBh5s5f2AjQoUVrr4/DHwLKuEa6Kbs2ToKBvcDiBGYXnwLtsCN7skxGKSGc8jxFvZTJ8BxygsYCcrArc5jls4rqvfZ4UYf7XtjNl4hVXLiyFmOp0f1WQ4Q17gyjoH27VoZbvFKiwPlrEucLMcbmKO83l/neBDceBniu1qc6HwTotVWMA+ngxRTB/uZWZXTcsH+FLg8kgbbRcUiFtYPs+xJcR2J/DfzCOnqyxzlrqDwEhuDVht1eftwBm1nRKzsDzYwqJQmw7mIe5kAF1mDb3GkY7locD7qzLetH1ZNGZhAXU8zvpQWxbzHZ7mInqS8Us0No6vgDk8zQWB3/BO4KsQnRSfaTNJHv4W/pOfhdpzj2mcwRss4k12kMjktPAYyNnMCfVZiUf5tfWnU0QdluODk7z7f5JZzAr5LQV8hS+xlbf5E++zkwqOUpMhd1/d6U4evRnMGM7kLE4O+Urn+yyxHlq0YRUw2umHje/iAHj4FdzFRIaE/r5cRjCCuRxkL+Uc5K8ZElYxfSmiH33bNQWmll/YL9kUbVhjWOzwkPhcy2+Sf17JQh5o9/teetGrHSuGZqqljb8FQ9GGlRt4PdhWMiQP3+dXjOParjJjNI32cS/77Xc7fs8KgeQiHHfxnOtxRK6WB1kaxQ3FNCzwoJxv87rrcUTsKX6Wvg/Na0tswwIPPmEBr7geR4Re4xYORPPoH+OwAPiY+fyvy5WxIvQq32BHVCeVsQ7LA9jN9fzA3Wp+EanlceZbX21PZfus8Aj7HT7v8ugZtKCtB/gVfI+/cCcTnI3UWhk/5hEORrnMqm1Yr3Gew7AKeYRTgjfz8Gt5jrV8i7m2b4lyIsEb3MNS/GhX77UN61OnayEUhb3K7+HDZm7kBb7JDNs3ckZsPY+wiE+jXxLaNCy3Vx/9nPAD8AC/liW8xTT+lfMpcTr0dKhjA//DU/VvH4n+SMRudkPrPHyoYjGvcSoX8kXGB376Tqaq4E/8hlfq37Tq5p+3wkqRXEvvCCtZyQOMZwpTGMvxISaiZIYa9rCeFbzOmvolJt09ZiisYzQudlbBcpaTx/EMYxQjGUoh/TP08ozPPraxiQ/YxG4Op+6JKwqrRSlr6W1jG0uBHHLJz9gXrQ835NQ0ercUVhuaDpAPCRLWsy7TNdpMoLBCyayD1hVk5jmDdHkKS0woLDGhsMSETt7NtPSukfg8CVBYdgqOWT/hCIcy5G1jEVBYdr7KgmZ/f4lbXQ8pOgrLzuBjpg6GWzEiS+jk3U5dwN+zmsISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxEbPFbWOzGrZz8Qorl7wIby3H9e66FK+wbuafI7y1Ea5316V4hTWe8a6HEBc6eRcTCktMKCwxobDEhMISE9kdVmbtXWaNxlg2X244zP0MdD2IFB+6HkCUsjmsIzztegjxlcVhxefzlzNRrB73JToKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMaGwxITCEhMKS0woLDGhsMSEwhITCktMKCwxobDEhMISEwpLTCgsMdFsDVJ9mp+kS+o9lrqSzkkpKPUe6xJOcj0y6dLOafpjQ1jdgLM4y/XIpMtLPgbWh1XLVupcj0iyQim1kFxl38+hf7w/wVjSJkG5l2gIy/VgJKvoM0HEzP8DmMCPVGkSgvgAAAAASUVORK5CYII=" alt="Farmacia Cesures">
+        <p>Farmacia de titularidad privada en Pontecesures, Pontevedra. Atención personalizada en <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:inherit;">Avenida Vigo, 38</a>.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a class="contact-link" href="tel:+34986556359" style="color:inherit;">986 556 359</a></li>
+          <li>
+            <a href="https://wa.me/34630621652" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16.004 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.353.615 4.646 1.783 6.666L2.667 29.333l6.83-1.76a13.27 13.27 0 0 0 6.507 1.76h.006c7.363 0 13.333-5.97 13.333-13.333 0-3.56-1.387-6.907-3.906-9.427a13.24 13.24 0 0 0-9.433-3.906Zm0 24.4h-.005a11.05 11.05 0 0 1-5.63-1.542l-.404-.24-4.053 1.045 1.082-3.951-.263-.406a11.03 11.03 0 0 1-1.694-5.873c0-6.106 4.966-11.07 11.072-11.07 2.957 0 5.736 1.152 7.827 3.245a10.996 10.996 0 0 1 3.239 7.83c0 6.106-4.966 11.07-11.07 11.07Zm6.07-8.29c-.332-.166-1.966-.97-2.271-1.081-.305-.111-.527-.166-.749.167-.222.332-.86 1.08-1.055 1.303-.194.222-.388.25-.72.083-.332-.166-1.402-.517-2.671-1.649-.987-.881-1.654-1.968-1.848-2.3-.194-.332-.02-.512.146-.677.15-.15.332-.388.499-.583.166-.194.221-.332.332-.554.111-.222.055-.416-.028-.583-.083-.166-.749-1.806-1.027-2.474-.27-.65-.545-.562-.749-.573l-.638-.011c-.222 0-.583.083-.888.416-.305.332-1.166 1.14-1.166 2.78 0 1.639 1.194 3.223 1.36 3.445.166.222 2.35 3.588 5.693 5.032.795.343 1.415.548 1.899.701.798.254 1.523.218 2.098.132.64-.096 1.966-.804 2.244-1.581.277-.777.277-1.443.194-1.581-.083-.139-.305-.222-.638-.388Z"/></svg>
+              WhatsApp: 630 621 652
+            </a>
+          </li>
+          <li><a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra','ChIJIcaE3DAFLw0RNQFhaEhlrMk')" style="color:inherit;">Avenida Vigo, 38, Pontecesures</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Enlaces</h5>
+        <ul>
+          <li><a href="#pedidos">Hacer un pedido</a></li>
+          <li><a href="#citas">Reservar cita</a></li>
+          <li><a href="https://instagram.com/farmaciacesures" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Farmacia Cesures</span>
+      <div class="foot-legal-links">
+        <button type="button" onclick="openLegal('aviso')">Aviso legal</button>
+        <button type="button" onclick="openLegal('privacidad')">Política de privacidad</button>
+      </div>
+      <span>Pontecesures, Pontevedra</span>
+    </div>
+  </div>
+</footer>
+
+<div class="legal-overlay" id="legalAviso">
+  <div class="legal-modal">
+    <button class="legal-close" onclick="closeLegal('aviso')" aria-label="Cerrar">✕</button>
+    <h3>Aviso legal</h3>
+    <p class="legal-updated">Última actualización: septiembre de 2026</p>
+
+    <h4>1. Datos identificativos</h4>
+    <p>
+      En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los siguientes datos:
+    </p>
+    <ul>
+      <li><strong>Titular:</strong> Mª Dolores Vázquez Illanes — Farmacéutica titular, colegiada nº 3758 (Colegio Oficial de Farmacéuticos de Pontevedra)</li>
+      <li><strong>Nombre comercial:</strong> Farmacia Cesures</li>
+      <li><strong>NIF:</strong> 34254483P</li>
+      <li><strong>Número de registro sanitario:</strong> PO-106-F</li>
+      <li><strong>Domicilio:</strong> Avenida Vigo, 38, 36640 Pontecesures, Pontevedra</li>
+      <li><strong>Teléfono:</strong> 986 556 359</li>
+      <li><strong>Correo electrónico:</strong> farmaciacesures@cofpo.org</li>
+    </ul>
+
+    <h4>2. Objeto y ámbito de aplicación</h4>
+    <p>
+      Este sitio web tiene una finalidad informativa: dar a conocer los servicios de Farmacia Cesures, facilitar la solicitud de citas y permitir encargar productos para recoger y pagar en el establecimiento. A través de esta web <strong>no se venden ni se dispensan medicamentos online</strong>; toda solicitud de pedido o cita se confirma directamente con la farmacia por WhatsApp o teléfono, y la recogida, dispensación y pago se realizan siempre de forma presencial en el local.
+    </p>
+
+    <h4>3. Condiciones de uso</h4>
+    <p>
+      El acceso a esta web es gratuito y no requiere registro previo. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios que se ofrecen, y a no emplearlos para incurrir en actividades ilícitas o contrarias a la buena fe y al ordenamiento legal.
+    </p>
+
+    <h4>4. Propiedad intelectual e industrial</h4>
+    <p>
+      Los contenidos de esta web (textos, imágenes, logotipo y diseño) son propiedad de Farmacia Cesures o se utilizan con la debida autorización. No está permitida su reproducción total o parcial sin consentimiento previo.
+    </p>
+
+    <h4>5. Responsabilidad</h4>
+    <p>
+      Farmacia Cesures no se hace responsable de los daños que pudieran derivarse de interferencias, interrupciones, virus informáticos o desconexiones en el funcionamiento de la web, ni de los causados por un uso inadecuado de la misma. La información sobre horarios y servicios se ofrece con carácter orientativo; en caso de duda, prevalece la información confirmada directamente por la farmacia.
+    </p>
+
+    <h4>6. Legislación aplicable</h4>
+    <p>
+      Las presentes condiciones se rigen por la legislación española. Para cualquier controversia derivada del uso de esta web, ambas partes se someten a los juzgados y tribunales de Pontevedra, salvo que la normativa de consumidores y usuarios establezca otro fuero.
+    </p>
+  </div>
+</div>
+
+<div class="legal-overlay" id="legalPrivacidad">
+  <div class="legal-modal">
+    <button class="legal-close" onclick="closeLegal('privacidad')" aria-label="Cerrar">✕</button>
+    <h3>Política de privacidad</h3>
+    <p class="legal-updated">Última actualización: septiembre de 2026</p>
+
+    <h4>1. Responsable del tratamiento</h4>
+    <ul>
+      <li><strong>Responsable:</strong> Mª Dolores Vázquez Illanes, titular de Farmacia Cesures</li>
+      <li><strong>NIF:</strong> 34254483P</li>
+      <li><strong>Domicilio:</strong> Avenida Vigo, 38, 36640 Pontecesures, Pontevedra</li>
+      <li><strong>Contacto:</strong> 986 556 359 · farmaciacesures@cofpo.org</li>
+    </ul>
+
+    <h4>2. Finalidad del tratamiento</h4>
+    <p>
+      Los datos que facilitas a través de los formularios de esta web (nombre, teléfono y el contenido de tu solicitud) se utilizan únicamente para gestionar tu pedido para recoger en tienda o tu solicitud de cita, y para contactar contigo por WhatsApp o teléfono con ese fin.
+    </p>
+
+    <h4>3. Legitimación</h4>
+    <p>
+      La base legal para el tratamiento de tus datos es tu consentimiento expreso, otorgado al marcar la casilla de aceptación y enviar el formulario.
+    </p>
+
+    <h4>4. Cómo se envían tus datos</h4>
+    <p>
+      Al confirmar un formulario, tus datos y el mensaje se envían a través de WhatsApp (servicio proporcionado por WhatsApp Ireland Limited, perteneciente a Meta) al número de la farmacia. El tratamiento de esos datos dentro de la aplicación de WhatsApp se rige por la política de privacidad de dicho servicio. Farmacia Cesures no almacena estos datos en ninguna base de datos ni servidor propio: quedan únicamente en la conversación de WhatsApp con la farmacia.
+    </p>
+
+    <h4>5. Conservación de los datos</h4>
+    <p>
+      Tus datos se conservan en la conversación de WhatsApp durante el tiempo necesario para gestionar tu pedido o cita, y posteriormente mientras sea necesario para atender posibles consultas relacionadas, salvo que solicites su eliminación.
+    </p>
+
+    <h4>6. Destinatarios</h4>
+    <p>
+      No se ceden datos a terceros salvo obligación legal. El único intermediario técnico es WhatsApp, como plataforma de mensajería utilizada para recibir tu solicitud.
+    </p>
+
+    <h4>7. Tus derechos</h4>
+    <p>
+      Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a farmaciacesures@cofpo.org o presencialmente en Avenida Vigo, 38, Pontecesures. También puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es) si consideras que tus derechos no han sido atendidos correctamente.
+    </p>
+
+    <h4>8. Menores de edad</h4>
+    <p>
+      Los formularios de esta web están dirigidos a personas mayores de edad. Si eres menor, necesitas la autorización de tu padre, madre o tutor legal para enviar tus datos.
+    </p>
+
+    <h4>9. Cookies</h4>
+    <p>
+      Esta web no utiliza cookies propias ni de terceros con fines analíticos, publicitarios o de seguimiento. Únicamente funciona con el código necesario para mostrar el contenido correctamente en tu navegador.
+    </p>
+  </div>
+</div>
+
+<script>
+  function openLegal(which){
+    const id = which === 'aviso' ? 'legalAviso' : 'legalPrivacidad';
+    document.getElementById(id).classList.add('open');
+  }
+  function closeLegal(which){
+    const id = which === 'aviso' ? 'legalAviso' : 'legalPrivacidad';
+    document.getElementById(id).classList.remove('open');
+  }
+  document.querySelectorAll('.legal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+  // ---- Maps: abre Apple Maps en iOS y Google Maps en el resto ----
+  function isIOSDevice(){
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+  function openMap(e, address, placeId){
+    if (e && e.preventDefault) e.preventDefault();
+    if (isIOSDevice()){
+      window.location.href = 'https://maps.apple.com/?q=' + encodeURIComponent(address);
+    } else {
+      let url = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address);
+      if (placeId) url += '&query_place_id=' + placeId;
+      window.open(url, '_blank');
+    }
+  }
+
+  // ---- Mobile nav ----
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // ---- Live opening hours ----
+  // 0=domingo ... 6=sábado (getDay). Lun-Vie 9:00-21:00, Sáb y Dom 9:30-14:00
+  function getScheduleFor(day){
+    const isWeekday = day >= 1 && day <= 5;
+    return isWeekday ? {openH:9, openM:0, closeH:21, closeM:0} : {openH:9, openM:30, closeH:14, closeM:0};
+  }
+
+  function updateStatus(){
+    const now = new Date();
+    const day = now.getDay();
+    const minutesNow = now.getHours()*60 + now.getMinutes();
+    const sched = getScheduleFor(day);
+    const openMin = sched.openH*60 + sched.openM;
+    const closeMin = sched.closeH*60 + sched.closeM;
+    const isOpen = minutesNow >= openMin && minutesNow < closeMin;
+
+    const dot = document.getElementById('statusDot');
+    const eyebrow = document.getElementById('statusEyebrow');
+    const headline = document.getElementById('statusHeadline');
+    const badge = document.getElementById('statusBadge');
+    const cardTitle = document.getElementById('statusCardTitle');
+    const cardText = document.getElementById('statusCardText');
+    const pad = n => String(n).padStart(2,'0');
+    const closeStr = `${pad(sched.closeH)}:${pad(sched.closeM)}`;
+    const openStr = `${pad(sched.openH)}:${pad(sched.openM)}`;
+
+    if (isOpen){
+      dot.classList.remove('closed');
+      eyebrow.textContent = 'Pontecesures, Pontevedra';
+      headline.childNodes[0].textContent = 'Abierta ahora ';
+      badge.textContent = 'Abierto ahora';
+      badge.classList.remove('closed');
+      cardTitle.textContent = `Cerramos hoy a las ${closeStr}`;
+      cardText.innerHTML = '<a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,\'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra\',\'ChIJIcaE3DAFLw0RNQFhaEhlrMk\')" style="color:inherit;">Avenida Vigo, 38, Pontecesures, Pontevedra.</a>';
+    } else {
+      dot.classList.add('closed');
+      eyebrow.textContent = 'Pontecesures, Pontevedra';
+      headline.childNodes[0].textContent = 'Ahora mismo, cerrada ';
+      badge.textContent = 'Cerrado ahora';
+      badge.classList.add('closed');
+      cardTitle.textContent = minutesNow < openMin ? `Abrimos hoy a las ${openStr}` : 'Abrimos mañana';
+      cardText.innerHTML = '<a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cesures&query_place_id=ChIJIcaE3DAFLw0RNQFhaEhlrMk" onclick="openMap(event,\'Avenida Vigo, 38, 36640 Pontecesures, Pontevedra\',\'ChIJIcaE3DAFLw0RNQFhaEhlrMk\')" style="color:inherit;">Avenida Vigo, 38, Pontecesures, Pontevedra.</a>';
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
+
+  // ---- Order form -> WhatsApp ----
+  const PHARMACY_WHATSAPP = '34630621652';
+
+  document.getElementById('orderForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('ordName').value;
+    const phone = document.getElementById('ordPhone').value;
+    const items = document.getElementById('ordItems').value;
+    const time = document.getElementById('ordTime').value;
+
+    const msg = `Hola, soy ${name} (tel. ${phone}). Quiero encargar:\n${items}\nRecojo: ${time}.`;
+    window.open(`https://wa.me/${PHARMACY_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+
+  // ---- Appointment form -> WhatsApp ----
+  document.getElementById('aptForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const service = document.getElementById('aptService').value;
+    const date = document.getElementById('aptDate').value;
+    const hour = document.getElementById('aptHour').value;
+    const name = document.getElementById('aptName').value;
+    const phone = document.getElementById('aptPhone').value;
+
+    const msg = `Hola, soy ${name} (tel. ${phone}). Quiero pedir cita para "${service}" el ${date} a las ${hour}.`;
+    window.open(`https://wa.me/${PHARMACY_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+</script>
+
+</body>
+</html>

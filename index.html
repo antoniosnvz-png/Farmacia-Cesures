@@ -165,11 +165,14 @@
   nav.main a:hover{background:rgba(255,255,255,.7);color:var(--tinta);}
   nav.main a.nav-cta{background:var(--verde);color:#fff;margin-left:8px;padding:11px 20px;}
   nav.main a.nav-cta:hover{background:var(--verde-osc);}
-  .menu-toggle{display:none;width:46px;height:46px;border-radius:50%;border:none;background:#fff;cursor:pointer;align-items:center;justify-content:center;}
-  .menu-toggle span{display:block;width:20px;height:2px;background:var(--tinta);margin:4px auto;border-radius:2px;transition:transform .25s ease, opacity .2s ease;}
-  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(10px) rotate(45deg);}
-  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+  .menu-toggle{display:none;position:relative;width:46px;height:46px;padding:0;border-radius:50%;border:none;background:#fff;cursor:pointer;-webkit-appearance:none;appearance:none;}
+  .menu-toggle span{position:absolute;left:13px;width:20px;height:2px;margin:0;background:var(--tinta);border-radius:2px;transition:transform .25s ease, opacity .15s ease, visibility .15s;}
+  .menu-toggle span:nth-child(1){top:16px;}
+  .menu-toggle span:nth-child(2){top:22px;}
+  .menu-toggle span:nth-child(3){top:28px;}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;visibility:hidden;transform:scaleX(0);}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
   /* ---------- Hero ---------- */
   .hero{padding:72px 0 0;overflow:hidden;}
@@ -420,7 +423,7 @@
     nav.main.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;}
     nav.main a{font-size:20px;padding:16px 20px;background:#fff;border-radius:20px;color:var(--tinta);}
     nav.main a.nav-cta{margin:10px 0 0;text-align:center;}
-    .menu-toggle{display:flex;flex-direction:column;}
+    .menu-toggle{display:block;}
   }
   @media (max-width: 640px){
     body{font-size:16px;}
